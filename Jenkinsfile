@@ -36,12 +36,15 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                docker.image('docker/compose:1.29.2').inside(args: '-v $PWD:/app -w /app') {
-                    sh 'docker-compose down || true'
-                    sh 'docker-compose up -d'
+                script {
+                    docker.image('docker/compose:1.29.2').inside('-v $PWD:/app -w /app') {
+                        sh 'docker-compose down || true'
+                        sh 'docker-compose up -d'
+                    }
                 }
             }
         }
+
     }
 
     post {
