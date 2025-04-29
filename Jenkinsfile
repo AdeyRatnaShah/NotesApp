@@ -6,9 +6,10 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Clone Code') {
             steps {
-                checkout scm
+                git branch: 'main', 
+                url: 'https://github.com/AdeyRatnaShah/NotesApp'
             }
         }
 
@@ -32,7 +33,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose down || true'  // avoid failure if not running
+                sh 'docker-compose down || true'
                 sh 'docker-compose up -d'
             }
         }
@@ -52,6 +53,5 @@ pipeline {
 
     options {
         disableConcurrentBuilds()
-        skipDefaultCheckout(false)
     }
 }
