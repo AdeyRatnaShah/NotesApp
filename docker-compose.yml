@@ -34,7 +34,7 @@ services:
       - notes-app-nw
 
   db:
-    image: mysql
+    image: mysql:8.4.5
     container_name: "db_cont"
     environment:
       - MYSQL_ROOT_PASSWORD=root
