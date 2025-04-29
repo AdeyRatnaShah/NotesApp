@@ -36,8 +36,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d'
+                docker.image('docker/compose:1.29.2').inside('--volume $PWD:/app --workdir /app') {
+                    sh 'docker-compose down || true'
+                    sh 'docker-compose up -d'
+                }
             }
         }
     }
