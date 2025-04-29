@@ -5,7 +5,7 @@ pipeline {
         stage('Clone Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/AnkitPrakash12C/docker_project.git'
+                    url: 'https://github.com/AdeyRatnaShah/NotesApp '
             }
         }
         
