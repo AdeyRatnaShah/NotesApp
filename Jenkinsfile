@@ -46,4 +46,10 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
+    options {
+        disableConcurrentBuilds()
+        // force full checkout every time
+        skipDefaultCheckout(false)
+    }
+
 }

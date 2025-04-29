@@ -13,7 +13,6 @@ RUN apt-get update \
 RUN pip install mysqlclient
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy from backend to container
 
 COPY . /app/backend
 
