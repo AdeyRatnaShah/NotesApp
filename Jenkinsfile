@@ -16,10 +16,13 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("${IMAGE_NAME}")
+                    docker.image('docker').inside {
+                        sh 'docker build -t notes-app:latest .'
+                    }
                 }
             }
         }
+
 
         stage('Push to DockerHub') {
             steps {
