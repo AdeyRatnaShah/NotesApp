@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'notes-app:latest'
+        IMAGE_NAME = IMAGE_NAME = 'arshah22/notes-app:latest'
     }
 
     stages {
@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     docker.image('docker').inside {
-                        sh 'docker build -t notes-app:latest .'
+                        sh "docker build -t ${IMAGE_NAME} ."
                     }
                 }
             }
